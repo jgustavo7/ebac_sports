@@ -4,9 +4,9 @@ import Produtos from './containers/Produtos'
 
 import { GlobalStyle } from './styles'
 import { Provider } from 'react-redux'
-import { store } from './store/'
+import { store } from './store'
 
-export type Produtos = {
+export type Produto = {
   id: number
   nome: string
   preco: number
@@ -14,9 +14,9 @@ export type Produtos = {
 }
 
 function App() {
-  const [favoritos, setFavoritos] = useState<Produtos[]>([])
+  const [favoritos, setFavoritos] = useState<Produto[]>([])
 
-  function favoritar(produto: Produtos) {
+  function favoritar(produto: Produto) {
     if (favoritos.find((p) => p.id === produto.id)) {
       const favoritosSemProduto = favoritos.filter((p) => p.id !== produto.id)
       setFavoritos(favoritosSemProduto)
@@ -29,8 +29,8 @@ function App() {
     <Provider store={store}>
       <GlobalStyle />
       <div className="container">
-        <Header />
-        <Produtos favoritar={favoritar} />
+        <Header favoritos={favoritos} />
+        <Produtos favoritos={favoritos} favoritar={favoritar} />
       </div>
     </Provider>
   )
