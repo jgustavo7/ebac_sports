@@ -1,6 +1,6 @@
 import { Produto as ProdutoType } from '../App'
 import Produto from '../components/Produto'
-import { useGetJogosQuery } from '../services/api'
+import { useGetProdutosQuery } from '../services/api'
 
 import * as S from './styles'
 
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ProdutosComponent = ({ favoritos, favoritar }: Props) => {
-  const { data: produtos, isLoading } = useGetJogosQuery()
+  const { data: produtos, isLoading } = useGetProdutosQuery()
 
   if (isLoading) return <h2>Carregando...</h2>
   const produtoEstaNosFavoritos = (produto: ProdutoType) => {

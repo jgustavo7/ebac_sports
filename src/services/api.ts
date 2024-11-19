@@ -7,12 +7,12 @@ const api = createApi({
     baseUrl: 'https://localhost:3000/'
   }),
   endpoints: (builder) => ({
-    getJogos: builder.query<Produto[], void>({
+    getProdutos: builder.query<Produto[], void>({
       query: () => 'Produto'
     })
   })
 })
 
-export const { useGetJogosQuery } = api
+export const { useGetProdutosQuery } = api
 
 export default api
